@@ -1,36 +1,73 @@
+<!-- Navbar -->
 <div class="fixed-top">
     <nav class="navbar-area">
         <div class="container">
             <div class="main-navbar">
-                <a routerLink="/" class="navbar-brand">
+                <a class="navbar-brand" routerLink="/">
                     <img src="../../../assets/images/logo.png" alt="logo">
                 </a>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-lg-auto" [class.active]="MobileNavActive">
                     <li class="nav-item">
-                        <a routerLink="/" class="nav-link">Home</a>
+                        <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a routerLink="/" class="nav-link">Home</a>
+                        <a routerLink="/" class="nav-link">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle">Shop</a>
-                        <ul class="dropdown-menu">
+                        <a class="nav-link dropdown-toggle" (click)="viewSubMenu()">Service</a>
+                        <ul class="dropdown-menu" [class.active]="subMenuActive">
                             <li class="nav-item">
-                            <a routerLink="/" class="nav-link">Shops Grid</a>
+                                <a routerLink="/" class="nav-link">Service Grid</a>
                             </li>
                             <li class="nav-item">
-                            <a routerLink="/" class="nav-link">Shop Details</a>
+                                <a routerLink="/" class="nav-link">Service Details</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a routerLink="/" class="nav-link">Home</a>
+                        <a routerLink="/" class="nav-link">Work</a>
                     </li>
                     <li class="nav-item">
-                        <a routerLink="/" class="nav-link">Home</a>
+                        <a routerLink="/" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-actions">
+                    <li>
+                        <a><i class="fab fa-opencart"></i></a>
+                    </li>
+                    <li>
+                        <a (click)="viewSearch()"><i class="fas fa-search"></i></a>
+                    </li>
+                    <li class="d-xl-none" (click)="viewMobileNav()">
+                        <a><i class="fas fa-bars"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+<!-- Navbar -->
+
+<!-- Search -->
+<div class="search-wrapper" [class.active]="searchOpen">
+    <div class="search-wrapper-close" (click)="searchClose()">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="search-wrapper-body">
+        <a routerLink="/">
+            <img src="../../../assets/images/logo.png" alt="logo">
+        </a>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <button>
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Search -->

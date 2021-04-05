@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+// Variable
+$default_font: 'Roboto', sans-serif;
+$secondary_font: 'Montserrat', sans-serif;
+$optional_font: 'Kaushan Script', cursive;
+$main_color: #fce38a;
+$secondary_color: #f38181;
+$text_color: #333333;
+$paragraph: #999999;
+$gradient: linear-gradient( 0deg, rgba(252, 227, 138, 1) 0%, rgba(243, 129, 129, 1) 100%);
+$to-1499: "only screen and (max-width: 1499px)";
+$to-1199: "only screen and (max-width: 1199px)";
+$to-991: "only screen and (max-width: 991px)";
+$to-767: "only screen and (max-width: 767px)";
