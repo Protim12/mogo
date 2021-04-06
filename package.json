@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.1.4",
+    "@angular/animations": "^11.2.8",
     "@angular/common": "~10.1.4",
     "@angular/compiler": "~10.1.4",
     "@angular/core": "~10.1.4",
@@ -20,9 +20,13 @@
     "@angular/platform-browser-dynamic": "~10.1.4",
     "@angular/router": "~10.1.4",
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.0.0-beta3",
+    "ngx-countup": "^7.3.3",
+    "ngx-owl-carousel-o": "^4.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "waypoints": "^4.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

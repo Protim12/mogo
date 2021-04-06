@@ -6,6 +6,7 @@ body {
 }
 a {
     color: $main_color;
+    text-decoration: none;
     transition: all 0.3s linear;
 }
 img {
@@ -43,5 +44,95 @@ img {
     }
     @media #{$to-767} {
         padding: 9px 25px;
+    }
+}
+.section-title {
+    text-align: center;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    small {
+        display: block;
+        font-size: 24px;
+        color: $text_color;
+        font-family: $optional_font;
+        margin-bottom: 23px;
+    }
+    h2 {
+        font-size: 30px;
+        color: $text_color;
+        font-family: $secondary_font;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 29px;
+        padding-bottom: 35px;
+        position: relative;
+        &:after {
+            content: "";
+            width: 60px;
+            height: 4px;
+            background-color: $secondary_color;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    p {
+        font-size: 15px;
+        color: $paragraph;
+        line-height: 1.6;
+        margin-bottom: 23px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    @media #{$to-991} {
+        margin-bottom: 30px;
+        small {
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            padding-bottom: 30px;
+        }
+        p {
+            margin-bottom: 17px;
+        }
+    }
+    @media #{$to-767} {
+        small {
+            font-size: 17px;
+        }
+        h2 {
+            font-size: 23px;
+        }
+    }
+}
+.pt-100 {
+    padding-top: 100px;
+    @media #{$to-991} {
+        padding-top: 50px;
+    }
+}
+.pb-100 {
+    padding-bottom: 100px;
+    @media #{$to-991} {
+        padding-bottom: 50px;
+    }
+}
+.pb-30 {
+    padding-bottom: 30px;
+}
+.pb-70 {
+    padding-bottom: 70px;
+    @media #{$to-991} {
+        padding-bottom: 20px;
     }
 }

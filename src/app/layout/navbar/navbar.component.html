@@ -1,10 +1,11 @@
 <!-- Navbar -->
 <div class="fixed-top">
-    <nav class="navbar-area">
+    <nav class="navbar-area" #stickyMenu [class.sticky] = "sticky">
         <div class="container">
             <div class="main-navbar">
                 <a class="navbar-brand" routerLink="/">
-                    <img src="../../../assets/images/logo.png" alt="logo">
+                    <img src="../../../assets/images/logo.png" alt="logo" class="default-logo">
+                    <img src="../../../assets/images/logo-color.png" alt="logo" class="sticky-logo">
                 </a>
                 <ul class="navbar-nav ms-lg-auto" [class.active]="MobileNavActive">
                     <li class="nav-item">

@@ -1,10 +1,50 @@
 <app-navbar></app-navbar>
 <header class="header-banner">
     <div class="container">
-        <div class="header-content">
-            <small>Creative Template</small>
-            <h1>WELCOME TO MOGO</h1>
-            <a routerLink="/" type="btn" class="btn main-btn">LEARN MORE</a>
+        <div class="header-view">
+            <div class="header-view-item" [ngClass]="{'active' : headerView == 1}">
+                <div class="header-content">
+                    <small>Creative Template</small>
+                    <h1>WELCOME TO MOGO</h1>
+                    <a routerLink="/" type="btn" class="btn main-btn">LEARN MORE</a>
+                </div>
+            </div>
+            <div class="header-view-item" [ngClass]="{'active' : headerView == 2}">
+                <div class="header-content">
+                    <small>Working Environment</small>
+                    <h1>WELCOME TO MOGO</h1>
+                    <a routerLink="/" type="btn" class="btn main-btn">LEARN MORE</a>
+                </div>
+            </div>
+            <div class="header-view-item" [ngClass]="{'active' : headerView == 3}">
+                <div class="header-content">
+                    <small>About Us</small>
+                    <h1>WELCOME TO MOGO</h1>
+                    <a routerLink="/" type="btn" class="btn main-btn">LEARN MORE</a>
+                </div>
+            </div>
+            <div class="header-view-item" [ngClass]="{'active' : headerView == 4}">
+                <div class="header-content">
+                    <small>Contact With Us</small>
+                    <h1>WELCOME TO MOGO</h1>
+                    <a routerLink="/" type="btn" class="btn main-btn">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-view-control">
+            <div class="header-control-item" (click)="headerView=1" [ngClass]="{'active' : headerView == 1}">
+                <strong>01</strong> INTRO
+            </div>
+            <div class="header-control-item" (click)="headerView=2" [ngClass]="{'active' : headerView == 2}">
+                <strong>02</strong> WORK
+            </div>
+            <div class="header-control-item" (click)="headerView=3" [ngClass]="{'active' : headerView == 3}">
+                <strong>03</strong> ABOUT
+            </div>
+            <div class="header-control-item" (click)="headerView=4" [ngClass]="{'active' : headerView == 4}">
+                <strong>04</strong> CONTACTS
+            </div>
         </div>
     </div>
 </header>
+<app-about-us></app-about-us>
