@@ -1,0 +1,14 @@
+<!-- Counter Section -->
+<div class="counter-section bg-green">
+    <div class="container">
+        <div class="row">
+            <div class="counter-item" #counter *ngFor="let item of myVariable">
+                <div class="counter-item-inner">
+                    <div class="counter-data" [countUp]="item.param">{{ item.param }}</div>
+                    <p>{{ item.text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Counter Section -->

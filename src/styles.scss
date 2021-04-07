@@ -13,6 +13,17 @@ img {
     max-width: 100%;
     vertical-align: middle;
 }
+h1, h2, h3, h4, h5, h6 {
+    color: $text_color;
+    font-family: $secondary_font;
+    font-weight: 700;
+} 
+p {
+    color: $paragraph;
+}
+.bg-green {
+    background-color: $bg_color;
+}
 .form-control {
     font-size: 16px;
     color: $text_color;
@@ -61,9 +72,6 @@ img {
     }
     h2 {
         font-size: 30px;
-        color: $text_color;
-        font-family: $secondary_font;
-        font-weight: 700;
         line-height: 1;
         margin-bottom: 29px;
         padding-bottom: 35px;
@@ -120,6 +128,15 @@ img {
     @media #{$to-991} {
         padding-top: 50px;
     }
+}
+.pt-70 {
+    padding-top: 70px;
+    @media #{$to-991} {
+        padding-top: 20px;
+    }
+}
+.pt-30 {
+    padding-top: 30px;
 }
 .pb-100 {
     padding-bottom: 100px;

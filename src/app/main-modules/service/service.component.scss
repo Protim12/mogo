@@ -1,0 +1,62 @@
+@import "../../../assets/css/variable";
+
+// Service
+.service-item {
+    @media #{$from-992} {
+        &:not(:nth-child(n+4)) {
+            border-bottom: 1px solid $border_color;
+        } 
+    }
+    @media #{$to-991} {
+        &:not(:nth-child(n+5)) {
+            border-bottom: 1px solid $border_color;
+        } 
+    }
+    @media #{$to-991} {
+        &:not(:last-child) {
+            border-bottom: 1px solid $border_color;
+        } 
+    }
+}
+.service-card {
+    display: flex;
+    @media #{$to-575} {
+        display: block;
+        text-align: center;
+    }
+}
+.service-card-icon {
+    flex: 0 0 auto;
+    width: 30px;
+    font-size: 30px;
+    line-height: 1;
+    color: $bg_color;
+    margin-right: 30px;
+    i {
+        line-height: 1;
+    }
+    @media #{$to-767} {
+        width: 25px;
+        font-size: 25px; 
+    }
+    @media #{$to-575} {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+}
+.service-card-info {
+    h3 {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+    p {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    @media #{$to-767} {
+        h3 {
+            font-size: 16px;
+        }
+    }
+}

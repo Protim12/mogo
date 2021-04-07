@@ -7,12 +7,16 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CountUpModule } from 'ngx-countup';
+import { CounterComponent } from './counter/counter.component';
+import { ServiceComponent } from './service/service.component';
+import { FeatureComponent } from './feature/feature.component';
+import { AccordionComponent } from './accordion/accordion.component';
 // import { Waypoint } from '@angular/node_modules/waypoint';
 // declare const Waypoint: any;
 
 
 @NgModule({
-  declarations: [MainViewComponent, AboutUsComponent],
+  declarations: [MainViewComponent, AboutUsComponent, CounterComponent, ServiceComponent, FeatureComponent, AccordionComponent],
   imports: [
     CommonModule,
     MainModuleRoutingModule,
