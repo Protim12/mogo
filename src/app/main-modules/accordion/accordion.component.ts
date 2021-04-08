@@ -13,6 +13,18 @@ export class AccordionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    var accordions = document.getElementsByClassName("accordion-header");
+    for (var i = 0; i < accordions.length; i++) {
+      accordions[i].addEventListener("click", function() {
+        var accordionItem = this.parentNode;
+        if(accordionItem.classList.contains("active")) {
+          accordionItem.classList.remove("active")
+        }
+        else {
+          accordionItem.classList.add("active")
+        }
+      })
+    }
     // this.showAccordion = false;
   }
 

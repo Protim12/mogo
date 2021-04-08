@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 // Variable
@@ -9,6 +9,7 @@ $optional_font: 'Kaushan Script', cursive;
 $main_color: #fce38a;
 $secondary_color: #f38181;
 $bg_color: #95e1d3;
+$bg_color_offwhite: #f5f5f5;
 $text_color: #333333;
 $paragraph: #999999;
 $gradient: linear-gradient( 0deg, rgba(252, 227, 138, 1) 0%, rgba(243, 129, 129, 1) 100%);

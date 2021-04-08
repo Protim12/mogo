@@ -1,0 +1,79 @@
+@import "../../../assets/css/variable";
+
+// Masonery
+.masonery-image {
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    a {
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: $gradient-overlay;
+            opacity: 0;
+            transition: all 0.3s linear;
+        }
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &:hover {
+        a {
+            &:after {
+                opacity: 1;
+            }
+        }
+        .masonery-info {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+    }
+}
+.masonery-info {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s ease;
+    padding: 10px;
+    i {
+        font-size: 25px;
+        margin-bottom: 17px;
+        color: #fff;
+    }
+    h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+    p {
+        font-size: 15px;
+        font-weight: 300;
+        font-style: italic;
+        color: #fff;
+        margin-bottom: 0;
+    }
+    @media #{$to-767} {
+        i {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+        h3 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+}

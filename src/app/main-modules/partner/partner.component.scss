@@ -1,0 +1,17 @@
+@import "../../../assets/css/variable";
+
+// Partner carousel
+.partner-slide {
+    img {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.5;
+        transition: all 0.3s linear;
+    }
+    &:hover {
+        img {
+            opacity: 1;
+        }
+    }
+}

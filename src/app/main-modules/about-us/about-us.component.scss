@@ -1,44 +1,8 @@
 @import "../../../assets/css/variable";
 
 .about-image-card {
-    position: relative;
-    transition: all 0.3s ease;
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $bg_color;
-        opacity: 0;
-        transition: all 0.2s linear;
-        z-index: -1;
-        transform: translate(-10px, -10px);
-    }
-    &:hover {
-        transform: translate(-10px, -10px);
-        &:before {
-            opacity: 1;
-            transform: translate(10px, 10px);
-        }
-    }
-    a {
-        &:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: $gradient-overlay;
-            opacity: 0;
-            transition: all 0.3s linear;
-        }
+    .animate-card-area {
         &:hover {
-            &:after {
-                opacity: 1;
-            }
             .about-image-card-info {
                 opacity: 1;
             }
