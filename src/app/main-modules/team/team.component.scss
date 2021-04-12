@@ -88,3 +88,48 @@
         }
     }
 }
+.sort-form {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: -15px;
+}
+.form-group {
+    width: 250px;
+    position: relative;
+    margin-bottom: 15px;
+    .form-control {
+        border-radius: 0;
+        padding: 10px 15px;
+        width: 100%;
+        border: 1px solid $border_color;
+        &:focus, &:active {
+            border: 1px solid $border_color;
+        }
+    }
+}
+.input-form {
+    &:after {
+        content: "\f002";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        vertical-align: middle;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.error-message {
+    margin-bottom: 30px;
+    text-align: center;
+    img {
+        width: 64px;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+}

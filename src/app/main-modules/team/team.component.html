@@ -6,30 +6,42 @@
             <h2>Meet Our Team</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 pb-30">
+        <form class="sort-form">
+            <div class="form-group input-form">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchItem" name="searchItem" (input)="searchTeamMember()">
+            </div>
+            <div class="form-group">
+                <select name="designation" #teamDepartment [(ngModel)]="teamDesignation" class="form-control" (input)="selectTeamMember()">
+                    <option *ngFor="let teamDept of team" [value]="teamDept.id">
+                        {{ teamDept.designation }}
+                    </option>
+                </select>
+            </div>
+        </form>
+        <div class="row" *ngIf="team?.length">
+            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let item of team; let last = last" [ngClass]="{ 'offset-sm-3 offset-lg-0': last }">
                 <div class="team-card">
                     <div class="animate-image-card">
                         <div class="animate-card-area">
-                            <img src="../../../assets/images/team/team-1.jpg" alt="about">
+                            <img [src]="item.thumb" alt="about">
                             <ul class="team-social-list">
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
+                                <li *ngIf="item.facebook">
+                                    <a [href]="item.facebook" target="_blank">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
+                                <li *ngIf="item.twitter">
+                                    <a [href]="item.twitter" target="_blank">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
+                                <li *ngIf="item.pinterest">
+                                    <a [href]="item.pinterest" target="_blank">
                                         <i class="fab fa-pinterest-p"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
+                                <li *ngIf="item.instagram">
+                                    <a [href]="item.instagram" target="_blank">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                 </li>
@@ -37,80 +49,16 @@
                         </div>
                     </div>
                     <div class="team-card-info">
-                        <h3>MATTHEW DIX</h3>
-                        <p>Graphic Design</p>
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.designation }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 pb-30">
-                <div class="team-card">
-                    <div class="animate-image-card">
-                        <div class="animate-card-area">
-                            <img src="../../../assets/images/team/team-2.jpg" alt="about">
-                            <ul class="team-social-list">
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-pinterest-p"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>CHRISTOPHER CAMPBELL</h3>
-                        <p>Branding/UX Design</p>
-                    </div>
-                </div>
-            </div>
-            <div class="offset-sm-3 offset-lg-0 col-sm-6 col-lg-4 pb-30">
-                <div class="team-card">
-                    <div class="animate-image-card">
-                        <div class="animate-card-area">
-                            <img src="../../../assets/images/team/team-3.jpg" alt="about">
-                            <ul class="team-social-list">
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-pinterest-p"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://yosite.orderpoz.co.uk/" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-card-info">
-                        <h3>MICHAEL FERTIG</h3>
-                        <p>Developer</p>
-                    </div>
-                </div>
+        </div>
+        <div *ngIf="! team?.length">
+            <div class="error-message">
+                <img src="assets/images/error.png" alt="error">
+                <p>Sorry! Your searched is not match with available item. Please try again with another letter.</p>
             </div>
         </div>
     </div>
