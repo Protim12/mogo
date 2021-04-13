@@ -62,6 +62,17 @@ p {
     @media #{$to-767} {
         padding: 9px 25px;
     }
+    i {
+        font-size: 15px;
+        margin-right: 8px;
+    }
+    &.main-btn-green {
+        &:hover {
+            border-color: $bg_color;
+            background-color: $bg_color;
+            color: #fff !important;
+        }
+    }
 }
 .section-title {
     text-align: center;

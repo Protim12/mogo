@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +12,9 @@ export class NavbarComponent implements OnInit {
 
   sticky: boolean = false;
   elementPosition: any;
+  user: SocialUser;
 
-  constructor() {
+  constructor(private socialAuthService: SocialAuthService) {
     
   }
   
@@ -38,6 +40,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // var navbarNav = document.getElementsByClassName("");
+    this.socialAuthService.authState.subscribe((user) => {
+      this.user = user;
+    })
   }
 
   ngAfterViewInit(){
@@ -52,6 +57,11 @@ export class NavbarComponent implements OnInit {
     } else {
       this.sticky = false;
     }
+  }
+
+  // google signin
+  signInWithGoogle() {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
 }

@@ -8,18 +8,23 @@
         </div>
         <form class="sort-form">
             <div class="form-group input-form">
-                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchItem" name="searchItem" (input)="searchTeamMember()">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchItem" name="searchItem" (input)="searchTeamMember($event)">
             </div>
+            <ul>
+                <li *ngFor="let show of searchResult" (click)="showDetails(show)" [hidden]="toggle">{{ show.name }}</li>
+            </ul>
             <div class="form-group">
-                <select name="designation" #teamDepartment [(ngModel)]="teamDesignation" class="form-control" (input)="selectTeamMember()">
-                    <option *ngFor="let teamDept of team" [value]="teamDept.id">
+                <select name="designation" #teamDepartment [(ngModel)]="teamDesignation" class="form-control" (change)="selectTeamMember($event)">
+                    <option value="null" selected hidden>All</option>
+                    <option value="">All</option>
+                    <option *ngFor="let teamDept of team; let i = index" [ngValue]="teamDept.designation">
                         {{ teamDept.designation }}
                     </option>
                 </select>
             </div>
         </form>
         <div class="row" *ngIf="team?.length">
-            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let item of team; let last = last" [ngClass]="{ 'offset-sm-3 offset-lg-0': last }">
+            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let item of groupTeam; let last = last" [ngClass]="{ 'offset-sm-3 offset-lg-0': last }">
                 <div class="team-card">
                     <div class="animate-image-card">
                         <div class="animate-card-area">
@@ -55,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="! team?.length">
+        <div *ngIf="!team?.length">
             <div class="error-message">
                 <img src="assets/images/error.png" alt="error">
                 <p>Sorry! Your searched is not match with available item. Please try again with another letter.</p>

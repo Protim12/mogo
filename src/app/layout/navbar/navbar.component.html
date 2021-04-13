@@ -45,6 +45,20 @@
                     <li class="d-xl-none" (click)="viewMobileNav()">
                         <a><i class="fas fa-bars"></i></a>
                     </li>
+                    <li>
+                        <a href="#" class="btn main-btn main-btn-green" (click)="signInWithGoogle()" *ngIf="!user">
+                            <i class="fas fa-user"></i>Login
+                        </a>
+                        <div class="user-prof" *ngIf="user">
+                            <div class="user-prof-thumb">
+                                <img src="{{user.photoUrl}}" alt="">
+                            </div>
+                            <div class="user-prof-texts">
+                                <h4>{{user.name}}</h4>
+                                <p>{{user.email}}</p>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
