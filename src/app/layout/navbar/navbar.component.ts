@@ -63,5 +63,9 @@ export class NavbarComponent implements OnInit {
   signInWithGoogle() {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
+  // google signout
+  signOutWithGoogle() {
+    this.socialAuthService.signOut();
+  }
 
 }

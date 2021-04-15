@@ -7,10 +7,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CountUpModule } from 'ngx-countup';
 import { TeamService } from '../services/team.service';
 import { FormsModule } from '@angular/forms';
+import { QuizesComponent } from './quizes/quizes.component';
 
 
 @NgModule({
-  declarations: [ ...component.allComponents],
+  declarations: [ ...component.allComponents, QuizesComponent],
   imports: [
     CommonModule,
     MainModuleRoutingModule,

@@ -472,3 +472,29 @@ p {
         }
     }
 }
+// header-inner-content
+.header-inner-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    h1 {
+        font-size: 50px;
+        color: #fff;
+        margin-bottom: 0;
+    }
+    @media #{$to-1199} {
+        h1 {
+            font-size: 45px;
+        }
+    }
+    @media #{$to-991} {
+        h1 {
+            font-size: 35px;
+        }
+    }
+    @media #{$to-767} {
+        h1 {
+            font-size: 25px;
+        }
+    }
+}

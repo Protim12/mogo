@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<!-- Inner Page Header -->
+<header class="inner-page-header">
+    <div class="container">
+        <div class="header-inner-content">
+            <h1>Our Quizes</h1>
+        </div>
+    </div>
+</header>
+<!-- Inner Page Header -->
+<!-- Quiz Section -->
+<section class="quiz-section pt-100 pb-100">
+    <div class="container">
+        <div class="section-title">
+            <small>Find Quizes</small>
+            <h2>ALL Quizes</h2>
+        </div>
+        <div>
+            <!-- {{pranto[0]}} <br> {{pranto[1]}} -->
+            <!-- {{final}} -->
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let turtles of mytur">
+                <div class="quiz-card">
+                    <div class="quiz-card-thumb">
+                        <a routerLink="/">
+                        <img src="{{turtles.imageUrl}}" alt="blog"></a>
+                        <div class="quiz-time">
+                            {{pranto[0]}}
+                            <span>{{pranto[1]}}</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-content">
+                        <h3>
+                            <a routerLink="/">LOREM IPSUM DOLOR SIT AMET</a>
+                        </h3>
+                        <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <ul class="quiz-entry">
+                            <li>
+                                <i class="fas fa-eye"></i>542
+                            </li>
+                            <li>
+                                <i class="fas fa-comment-dots"></i>17
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 pb-30">
+                <div class="quiz-card">
+                    <div class="quiz-card-thumb">
+                        <a routerLink="/">
+                        <img src="assets/images/blog/blog-2.jpg" alt="blog"></a>
+                        <div class="quiz-time">
+                            14 <span>Jan</span>
+                        </div>
+                    </div>
+                    <div class="quiz-card-content">
+                        <h3>
+                            <a routerLink="/">SED DO EIUSMOD TEMPOR</a>
+                        </h3>
+                        <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <ul class="quiz-entry">
+                            <li>
+                                <i class="fas fa-eye"></i>992
+                            </li>
+                            <li>
+                                <i class="fas fa-comment-dots"></i>42
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Quiz Section -->
+<app-footer></app-footer>

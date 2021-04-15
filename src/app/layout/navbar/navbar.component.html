@@ -26,7 +26,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a routerLink="/" class="nav-link">Work</a>
+                        <a routerLink="/quizes" class="nav-link" routerLinkActive="active">Quizes</a>
                     </li>
                     <li class="nav-item">
                         <a routerLink="/" class="nav-link">Blog</a>
@@ -46,16 +46,17 @@
                         <a><i class="fas fa-bars"></i></a>
                     </li>
                     <li>
-                        <a href="#" class="btn main-btn main-btn-green" (click)="signInWithGoogle()" *ngIf="!user">
+                        <button class="btn main-btn main-btn-green" (click)="signInWithGoogle()" *ngIf="!user">
                             <i class="fas fa-user"></i>Login
-                        </a>
+                        </button>
                         <div class="user-prof" *ngIf="user">
                             <div class="user-prof-thumb">
                                 <img src="{{user.photoUrl}}" alt="">
                             </div>
                             <div class="user-prof-texts">
                                 <h4>{{user.name}}</h4>
-                                <p>{{user.email}}</p>
+                                <!-- <p>{{user.email}}</p> -->
+                                <button class="sign-out" (click)="signOutWithGoogle()">Sign Out</button>
                             </div>
                         </div>
                     </li>

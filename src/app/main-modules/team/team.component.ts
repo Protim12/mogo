@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { TeamService } from 'src/app/services/team.service';
 // FilterPipe
 

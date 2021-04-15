@@ -283,6 +283,13 @@
         @media #{$to-1199} {
             padding-bottom: 10px;
         }
+        .main-btn {
+            &.main-btn-green {
+                // background-color: $bg_color;
+                border-color: $bg_color;
+                color: $text_color;
+            }
+        }
     }
     @media #{$to-991} {
         padding-left: 20px;
@@ -379,6 +386,12 @@
     p {
         font-size: 14px;
         color: #fff;
-        margin-bottom: 0;
+        margin-bottom: 3px;
+    }
+    button {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        color: #fff;
     }
 }

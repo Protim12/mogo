@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModuleModule } from './main-modules/main-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterPipe } from './pipes/filter.pipe';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 // import
@@ -27,8 +26,6 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe,
-    // HomeComponent,
   ],
   imports: [
     BrowserModule,
