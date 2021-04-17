@@ -20,7 +20,7 @@
                 <div class="quiz-card">
                     <div class="quiz-card-thumb">
                         <a (click)="changeActiveTurtle(turtles)">
-                            <img src="{{turtles.imageUrl}}" alt="blog">
+                            <img [src]="turtles.imageUrl" alt="blog">
                         </a>
                         <div class="quiz-time" *ngIf="turtles.splittedDate">
                             {{turtles.splittedDate.number}}
@@ -52,7 +52,7 @@
             <button (click)="closeModal()" class="my-close-btn"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body-content">
-            <img src="{{activeTurtle.imageUrl}}" alt="modal">
+            <img [src]="activeTurtle.imageUrl" alt="modal">
             <p><Strong>Location:</Strong> {{activeTurtle.location}}</p>
             <p><Strong>Size:</Strong> {{activeTurtle.size}}</p>
             <p><Strong>Lifespan:</Strong> {{activeTurtle.lifespan}}</p>
