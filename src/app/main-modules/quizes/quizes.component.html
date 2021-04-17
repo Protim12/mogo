@@ -9,32 +9,27 @@
 </header>
 <!-- Inner Page Header -->
 <!-- Quiz Section -->
-<section class="quiz-section pt-100 pb-100">
+<section class="quiz-section pt-100 pb-70 border-bottom">
     <div class="container">
         <div class="section-title">
             <small>Find Quizes</small>
             <h2>ALL Quizes</h2>
         </div>
-        <div>
-            <!-- {{pranto[0]}} <br> {{pranto[1]}} -->
-            <!-- {{final}} -->
-        </div>
         <div class="row">
-            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let turtles of mytur">
+            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let turtles of myturtles">
                 <div class="quiz-card">
                     <div class="quiz-card-thumb">
-                        <a routerLink="/">
-                        <img src="{{turtles.imageUrl}}" alt="blog"></a>
-                        <div class="quiz-time">
-                            {{pranto[0]}}
-                            <span>{{pranto[1]}}</span>
+                        <a (click)="changeActiveTurtle(turtles)">
+                            <img src="{{turtles.imageUrl}}" alt="blog">
+                        </a>
+                        <div class="quiz-time" *ngIf="turtles.splittedDate">
+                            {{turtles.splittedDate.number}}
+                            <span>{{turtles.splittedDate.month}}</span>
                         </div>
                     </div>
                     <div class="quiz-card-content">
-                        <h3>
-                            <a routerLink="/">LOREM IPSUM DOLOR SIT AMET</a>
-                        </h3>
-                        <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 (click)="changeActiveTurtle(turtles)">{{turtles.type}}</h3>
+                        <p>{{turtles.details}}</p>
                         <ul class="quiz-entry">
                             <li>
                                 <i class="fas fa-eye"></i>542
@@ -46,33 +41,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 pb-30">
-                <div class="quiz-card">
-                    <div class="quiz-card-thumb">
-                        <a routerLink="/">
-                        <img src="assets/images/blog/blog-2.jpg" alt="blog"></a>
-                        <div class="quiz-time">
-                            14 <span>Jan</span>
-                        </div>
-                    </div>
-                    <div class="quiz-card-content">
-                        <h3>
-                            <a routerLink="/">SED DO EIUSMOD TEMPOR</a>
-                        </h3>
-                        <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul class="quiz-entry">
-                            <li>
-                                <i class="fas fa-eye"></i>992
-                            </li>
-                            <li>
-                                <i class="fas fa-comment-dots"></i>42
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 <!-- Quiz Section -->
+<div class="my-modal-wrapper" [class.active]="myModalTrue" *ngIf="activeTurtle">
+    <div class="my-modal-body">
+        <div class="my-modal-header">
+            <h3>{{activeTurtle.type}}</h3>
+            <button (click)="closeModal()" class="my-close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body-content">
+            <img src="{{activeTurtle.imageUrl}}" alt="modal">
+            <p><Strong>Location:</Strong> {{activeTurtle.location}}</p>
+            <p><Strong>Size:</Strong> {{activeTurtle.size}}</p>
+            <p><Strong>Lifespan:</Strong> {{activeTurtle.lifespan}}</p>
+            <p><Strong>Description:</Strong> {{activeTurtle.details}}</p>
+        </div>
+        <div class="my-modal-footer">
+            <button (click)="closeModal()">CLOSE MODAL</button>
+        </div>
+    </div>
+</div>
+<!-- Quiz Modal -->
 <app-footer></app-footer>

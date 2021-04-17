@@ -10,44 +10,32 @@ import myJson from 'src/assets/my-quiz.json';
 })
 export class QuizesComponent implements OnInit {
 
-  public mytur: {type:string, imageUrl:string,location:string, size:string,lifespan:string, entryDate:string,details:string}[] = myJson;
-  
-  turtleList: Turtles[] = [];
-  newT;
-  str:any = "My age 26 of"
+  public myturtles: {type:string, imageUrl:string, location:string, size:string, lifespan:string, entryDate:string, details:string}[] = myJson;
 
-  myArray:any = [
-    {
-      "name": "pranto 1 protim 10",
-      "type": "dan 1 dna"
-    }
-  ];
-  final: any;
-  pranto: any;
-  
+  splitDate: any;
+  activeTurtle: {};
+  myModalTrue = false
+
   constructor(public rs: RestService, private _myTur: RestService) { }
   
   ngOnInit(): void {
-
-    // this.newT = this._myTur.getTurtles();
-
-    // this.pranto = this.myArray[0].name.split(" ");
-    // console.log(this.pranto)
-    // this.final = this.myArray[0].name.split(" ").filter(function(elem) {
-    //   return !isNaN(elem);
-    // }).map(function(val) {
-    //   return parseFloat(val)
-    // })
-
-    console.log(this.mytur);
-    this.pranto = this.mytur[0].entryDate.split(" ");
-    console.log(this.pranto)
-    this.final = this.pranto.filter(function(elem) {
-      return !isNaN(elem);
-    }).map(function(val) {
-      return parseFloat(val)
-    })
-    console.log(this.final)
+    for(var i = 0; i<this.myturtles.length; i++) {
+      this.splitDate = this.myturtles[i].entryDate.split(" ");
+      this.myturtles[i]["splittedDate"]= {
+        "number": this.splitDate[0],
+        "month": this.splitDate[1]
+      }
+    }
   }
 
+  changeActiveTurtle(index) {
+    this.activeTurtle = index;
+    this.myModalTrue = true;
+  }
+
+  closeModal() {
+    if(this.myModalTrue = true) {
+      this.myModalTrue = false;
+    }
+  }
 }
