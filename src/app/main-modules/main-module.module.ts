@@ -8,10 +8,13 @@ import { CountUpModule } from 'ngx-countup';
 import { TeamService } from '../services/team.service';
 import { FormsModule } from '@angular/forms';
 import { QuizesComponent } from './quizes/quizes.component';
+import { QuizCardSearchPipe } from '../pipes/quiz-card-search.pipe';
+import { QuizsOptionComponent } from './quizs-option/quizs-option.component';
+import { QuizMetrixService } from '../services/quiz-metrix.service';
 
 
 @NgModule({
-  declarations: [ ...component.allComponents, QuizesComponent],
+  declarations: [ ...component.allComponents, QuizesComponent, QuizCardSearchPipe, QuizsOptionComponent],
   imports: [
     CommonModule,
     MainModuleRoutingModule,
@@ -20,7 +23,7 @@ import { QuizesComponent } from './quizes/quizes.component';
     CountUpModule,
     FormsModule
   ],
-  providers: [TeamService]
+  providers: [TeamService, QuizMetrixService]
 })
 export class MainModuleModule { 
 }

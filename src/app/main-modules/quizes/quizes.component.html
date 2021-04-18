@@ -15,33 +15,51 @@
             <small>Find Quizes</small>
             <h2>ALL Quizes</h2>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let turtles of myturtles">
-                <div class="quiz-card">
-                    <div class="quiz-card-thumb">
-                        <a (click)="changeActiveTurtle(turtles)">
-                            <img [src]="turtles.imageUrl" alt="blog">
-                        </a>
-                        <div class="quiz-time" *ngIf="turtles.splittedDate">
-                            {{turtles.splittedDate.number}}
-                            <span>{{turtles.splittedDate.month}}</span>
-                        </div>
+        <div [hidden]="quizMetrixService.quizCardArea">
+            <div class="section-action-header">
+                <form class="sort-form">
+                    <div class="form-group input-form">
+                        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="turtlesSearch" name="turtlesSearch">
                     </div>
-                    <div class="quiz-card-content">
-                        <h3 (click)="changeActiveTurtle(turtles)">{{turtles.type}}</h3>
-                        <p>{{turtles.details}}</p>
-                        <ul class="quiz-entry">
-                            <li>
-                                <i class="fas fa-eye"></i>542
-                            </li>
-                            <li>
-                                <i class="fas fa-comment-dots"></i>17
-                            </li>
-                        </ul>
+                </form>
+                <button class="btn main-btn main-btn-green" (click)="quizToggleMethod()">START QUIZ</button>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 pb-30" *ngFor="let turtles of newMyTurtlesData | quizCardSearch: turtlesSearch;">
+                    <div class="quiz-card">
+                        <div class="quiz-card-thumb">
+                            <a (click)="changeActiveTurtle(turtles)">
+                                <img [src]="turtles.imageUrl" alt="blog">
+                            </a>
+                            <div class="quiz-time" *ngIf="turtles.splittedDate">
+                                {{turtles.splittedDate.number}}
+                                <span>{{turtles.splittedDate.month}}</span>
+                            </div>
+                        </div>
+                        <div class="quiz-card-content">
+                            <h3 (click)="changeActiveTurtle(turtles)">{{turtles.type}}</h3>
+                            <p>{{turtles.details}}</p>
+                            <ul class="quiz-entry">
+                                <li>
+                                    <i class="fas fa-eye"></i>542
+                                </li>
+                                <li>
+                                    <i class="fas fa-comment-dots"></i>17
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div *ngIf="(newMyTurtlesData | quizCardSearch : turtlesSearch).length === 0">
+                <div class="error-message">
+                    <img src="assets/images/error.png" alt="error">
+                    <p>Sorry! Your searched is not match with available item. Please try again with another letter.</p>
+                </div>
+            </div>
         </div>
+
+        <app-quizs-option [hidden]="!quizMetrixService.quizCardArea"></app-quizs-option>
     </div>
 </section>
 <!-- Quiz Section -->

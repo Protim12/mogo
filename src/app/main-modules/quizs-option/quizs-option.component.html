@@ -1,0 +1,43 @@
+<div class="row quiz-info-area">
+    <div class="col-md-8">
+        <div class="quiz-info-area-item">
+            <h3>Progress:</h3>
+            <div class="button-toolbar">
+                <button class="btn main-btn" *ngFor="let questionBtn of newTurtlesQuestions" [ngClass]="{'main-btn-red': questionBtn.selected === null, 'main-btn-green': questionBtn.selected !== null}">
+                    <i class="fas" [ngClass]="{'fa-question-circle': questionBtn.selected === null, 'fa-pencil-alt': questionBtn.selected !== null}"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="quiz-info-area-item">
+            <h3>Legend:</h3>
+            <div class="row">
+                <div class="col-4">
+                    <div class="button-toolbar">
+                        <button class="btn main-btn main-btn-green">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <p>Answered</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="button-toolbar">
+                        <button class="btn main-btn main-btn-red">
+                            <i class="fas fa-question-circle"></i>
+                        </button>
+                        <p>Not Answered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="quiz-display-area">
+    <div class="quiz-area-header">{{activeQuestion+1 + ". " + newTurtlesQuestions[activeQuestion].text}}</div>
+    <div class="quiz-area-body">
+        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities">
+            <div class="quiz-area-list-inner">{{item.answer}}</div>
+        </div>
+    </div>
+</div>

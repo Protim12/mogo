@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { Turtles } from '../turtles';
 import myJson from 'src/assets/my-quiz.json';
+import { QuizCardSearchPipe } from 'src/app/pipes/quiz-card-search.pipe';
+import { QuizMetrixService } from 'src/app/services/quiz-metrix.service';
+import { DataServeService } from 'src/app/services/data-serve.service';
 
 @Component({
   selector: 'app-quizes',
@@ -10,18 +13,22 @@ import myJson from 'src/assets/my-quiz.json';
 })
 export class QuizesComponent implements OnInit {
 
-  public myturtles: {type:string, imageUrl:string, location:string, size:string, lifespan:string, entryDate:string, details:string}[] = myJson;
-
+  newMyTurtlesData: any;
+  newArray: any;
   splitDate: any;
   activeTurtle: {};
-  myModalTrue = false
+  myModalTrue = false;
+  turtlesSearch: any;
 
-  constructor(public rs: RestService, private _myTur: RestService) { }
+  constructor(public rs: RestService, private _myTur: RestService, public quizMetrixService: QuizMetrixService, private newMyTurtles: DataServeService) { }
   
   ngOnInit(): void {
-    for(var i = 0; i<this.myturtles.length; i++) {
-      this.splitDate = this.myturtles[i].entryDate.split(" ");
-      this.myturtles[i]["splittedDate"]= {
+    this.newMyTurtlesData = this.newMyTurtles.myturtles;
+
+    this.newArray = this.newMyTurtlesData;
+    for(var i = 0; i<this.newMyTurtlesData.length; i++) {
+      this.splitDate = this.newMyTurtlesData[i].entryDate.split(" ");
+      this.newMyTurtlesData[i]["splittedDate"]= {
         "number": this.splitDate[0],
         "month": this.splitDate[1]
       }
@@ -37,5 +44,10 @@ export class QuizesComponent implements OnInit {
     if(this.myModalTrue = true) {
       this.myModalTrue = false;
     }
+  }
+
+  // quizToggleMethod
+  quizToggleMethod() {
+    this.quizMetrixService.changeState(true);
   }
 }

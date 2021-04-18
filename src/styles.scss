@@ -70,9 +70,22 @@ p {
         margin-right: 8px;
     }
     &.main-btn-green {
+        border-color: $bg_color;
+        background-color: $bg_color;
+        color: #fff !important;
         &:hover {
             border-color: $bg_color;
             background-color: $bg_color;
+            color: #fff !important;
+        }
+    }
+    &.main-btn-red {
+        border-color: $secondary_color;
+        background-color: $secondary_color;
+        color: #fff !important;
+        &:hover {
+            border-color: $secondary_color;
+            background-color: $secondary_color;
             color: #fff !important;
         }
     }
@@ -499,5 +512,20 @@ p {
         h1 {
             font-size: 25px;
         }
+    }
+}
+.section-action-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    &>* {
+        margin-top: 15px;
+    }
+    .main-btn {
+        background-color: $bg_color;
+        border-color: $bg_color;
     }
 }
