@@ -3,7 +3,7 @@
         <div class="quiz-info-area-item">
             <h3>Progress:</h3>
             <div class="button-toolbar">
-                <button class="btn main-btn" *ngFor="let questionBtn of newTurtlesQuestions" [ngClass]="{'main-btn-red': questionBtn.selected === null, 'main-btn-green': questionBtn.selected !== null}">
+                <button class="btn main-btn" *ngFor="let questionBtn of newTurtlesQuestions; let i = index" [ngClass]="{'main-btn-red': questionBtn.selected === null, 'main-btn-green': questionBtn.selected !== null}" (click)="setActiveQuestion(i)">
                     <i class="fas" [ngClass]="{'fa-question-circle': questionBtn.selected === null, 'fa-pencil-alt': questionBtn.selected !== null}"></i>
                 </button>
             </div>
@@ -35,9 +35,54 @@
 </div>
 <div class="quiz-display-area">
     <div class="quiz-area-header">{{activeQuestion+1 + ". " + newTurtlesQuestions[activeQuestion].text}}</div>
-    <div class="quiz-area-body">
-        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities">
-            <div class="quiz-area-list-inner">{{item.answer}}</div>
+    <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'text'">
+        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities; let i = index" >
+            <div class="quiz-area-list-inner" [ngClass]="{'active': i === newTurtlesQuestions[activeQuestion].selected}" (click)="seletedAnswer(i)">{{item.answer}}</div>
+        </div>
+    </div>
+    <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'image'">
+        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities; let i = index" >
+            <div class="quiz-area-list-inner" [ngClass]="{'active': i === newTurtlesQuestions[activeQuestion].selected}" (click)="seletedAnswer(i)">
+                <img [src]="item.answer" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="quiz-area-footer">
+        <button class="btn main-btn main-btn-green" *ngIf="newTurtlesQuestions?.length" (click)="continueQuiz()">Continue</button>
+    </div>
+</div>
+
+<!-- <div *ngIf="finalize">
+    <p>ready for submit?</p>
+    <button (click)="finalizeAnswer()">Yes</button>
+    <button (click)="finalize = false">No</button>
+</div> -->
+
+<!-- Error Modal -->
+<div class="error-modal-wrapper" [ngClass]="{'active': error}">
+    <div class="error-modal">
+        <div class="error-modal-body">
+            <img src="assets/images/error-modal.png" alt="">
+            <p>Please answer all the questions.</p>
+        </div>
+        <div class="error-modal-footer">
+            <button class="btn main-btn main-btn-red" (click)="error = false">CLOSE MODAL</button>
         </div>
     </div>
 </div>
+<!-- Error Modal -->
+
+<!-- Prompt Modal -->
+<div class="error-modal-wrapper" [ngClass]="{'active': finalize}">
+    <div class="error-modal">
+        <div class="error-modal-body">
+            <img src="assets/images/error-modal.png" alt="">
+            <p>Are to sure to submit your answers?</p>
+        </div>
+        <div class="error-modal-footer d-flex justify-content-center">
+            <button class="btn main-btn main-btn-green" (click)="finalizeAnswer()">YES</button>
+            <button class="btn main-btn main-btn-red" (click)="finalize = false">NO</button>
+        </div>
+    </div>
+</div>
+<!-- Error Modal -->
