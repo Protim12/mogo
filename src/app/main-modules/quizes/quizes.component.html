@@ -15,7 +15,7 @@
             <small>Find Quizes</small>
             <h2>ALL Quizes</h2>
         </div>
-        <div [hidden]="quizMetrixService.quizCardArea">
+        <div [hidden]="quizMetrixService.quizCardArea || quizMetrixService.resultActive">
             <div class="section-action-header">
                 <form class="sort-form">
                     <div class="form-group input-form">
@@ -60,6 +60,10 @@
         </div>
 
         <app-quizs-option [hidden]="!quizMetrixService.quizCardArea"></app-quizs-option>
+
+        <!-- Quiz Result -->
+        <app-quiz-result [hidden]="!quizMetrixService.resultActive"></app-quiz-result>
+        <!-- Quiz Result -->
     </div>
 </section>
 <!-- Quiz Section -->

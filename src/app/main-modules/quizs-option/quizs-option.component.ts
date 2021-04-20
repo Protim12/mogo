@@ -68,6 +68,11 @@ export class QuizsOptionComponent implements OnInit {
 
   // Finalize answer
   finalizeAnswer() {
-    // 
+    this.finalize = false;
+    this.numQuestionAnswered = 0;
+    this.activeQuestion = 0;
+    this.quizMetrixService.markQuiz();
+    this.quizMetrixService.changeState("quiz", false);
+    this.quizMetrixService.changeState("results", true);
   }
 }

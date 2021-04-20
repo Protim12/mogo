@@ -8,7 +8,8 @@ import questionsJson from 'src/assets/questions.json';
 export class DataServeService {
 
   public myturtles: {type:string, imageUrl:string, location:string, size:string, lifespan:string, entryDate:string, details:string}[] = myJson;
-  public quizQuestions: {type:string, text:string, possibilities:any, selected:null, correct:null}[] = questionsJson;
+  public quizQuestions: {type:string, text:string, possibilities:any, selected:null, correct:any}[] = questionsJson;
+  correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
   turtlesData: any;
   // quizQuestions: any;
   length: number;

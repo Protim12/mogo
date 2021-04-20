@@ -11,10 +11,11 @@ import { QuizesComponent } from './quizes/quizes.component';
 import { QuizCardSearchPipe } from '../pipes/quiz-card-search.pipe';
 import { QuizsOptionComponent } from './quizs-option/quizs-option.component';
 import { QuizMetrixService } from '../services/quiz-metrix.service';
+import { QuizResultComponent } from './quiz-result/quiz-result.component';
 
 
 @NgModule({
-  declarations: [ ...component.allComponents, QuizesComponent, QuizCardSearchPipe, QuizsOptionComponent],
+  declarations: [ ...component.allComponents, QuizesComponent, QuizCardSearchPipe, QuizsOptionComponent, QuizResultComponent],
   imports: [
     CommonModule,
     MainModuleRoutingModule,

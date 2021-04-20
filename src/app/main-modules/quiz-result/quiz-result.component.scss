@@ -1,0 +1,17 @@
+@import "../../../assets/css/variable";
+
+.top-buffer {
+    margin-bottom: 30px;
+    h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        span {
+            color: $secondary_color;
+            margin-left: 10px;
+        }
+    }
+    h4 {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+}

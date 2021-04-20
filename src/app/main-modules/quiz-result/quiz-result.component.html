@@ -1,0 +1,63 @@
+<div class="row quiz-info-area">
+    <div class="col-md-8">
+        <div class="quiz-info-area-item">
+            <h3>Progress:</h3>
+            <div class="button-toolbar">
+                <button class="btn main-btn" *ngFor="let questionBtn of newTurtlesQuestions; let i = index" [ngClass]="{'main-btn-red': !questionBtn.correct, 'main-btn-green': questionBtn.correct}" (click)="setActiveQuestion(i)">
+                    <i class="fas" [ngClass]="{'fa-times': !questionBtn.correct, 'fa-check': questionBtn.correct}"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="quiz-info-area-item">
+            <h3>Legend:</h3>
+            <div class="row">
+                <div class="col-4">
+                    <div class="button-toolbar">
+                        <button class="btn main-btn main-btn-green">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <p>Correct</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="button-toolbar">
+                        <button class="btn main-btn main-btn-red">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <p>Incorrect</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="top-buffer">
+    <h3>You Scored: <span>{{quizMetrixService.numCorrect}} / {{newTurtlesQuestions.length}}</span></h3>
+    <h4>{{calculatePercentage() | number: '2.1-2'}}%</h4>
+</div>
+<div class="quiz-display-area">
+    <div class="quiz-area-header">{{activeQuestion+1 + ". " + newTurtlesQuestions[activeQuestion].text}}</div>
+    <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'text'">
+        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion]?.possibilities; let i = index" >
+            <div class="quiz-area-list-inner" [ngClass]="getAnswerClass(i)" (click)="seletedAnswer(i)">
+                {{item.answer}}
+                <p *ngIf="i !== quizMetrixService.correctAnswer[activeQuestion] && i === newTurtlesQuestions[activeQuestion].selected">Your Answer</p>
+                <p *ngIf="i === quizMetrixService.correctAnswer[activeQuestion]">Correct Answer</p>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'image'">
+        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion]?.possibilities; let i = index" >
+            <div class="quiz-area-list-inner" [ngClass]="getAnswerClass(i)" (click)="seletedAnswer(i)">
+                <img [src]="item.answer" alt="">
+                <p *ngIf="i !== quizMetrixService.correctAnswer[activeQuestion] && i === newTurtlesQuestions[activeQuestion].selected">Your Answer</p>
+                <p *ngIf="i === quizMetrixService.correctAnswer[activeQuestion]">Correct Answer</p>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-area-footer">
+        <button class="btn main-btn main-btn-green" *ngIf="newTurtlesQuestions?.length" (click)="reset()">GO BACK TO FACTS</button>
+    </div>
+</div>

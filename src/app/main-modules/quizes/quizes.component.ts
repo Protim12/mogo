@@ -48,6 +48,6 @@ export class QuizesComponent implements OnInit {
 
   // quizToggleMethod
   quizToggleMethod() {
-    this.quizMetrixService.changeState(true);
+    this.quizMetrixService.changeState("quiz", true);
   }
 }
