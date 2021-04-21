@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { Turtles } from '../turtles';
 import myJson from 'src/assets/my-quiz.json';
@@ -19,6 +19,7 @@ export class QuizesComponent implements OnInit {
   activeTurtle: {};
   myModalTrue = false;
   turtlesSearch: any;
+  
 
   constructor(public rs: RestService, private _myTur: RestService, public quizMetrixService: QuizMetrixService, private newMyTurtles: DataServeService) { }
   
@@ -33,7 +34,14 @@ export class QuizesComponent implements OnInit {
         "month": this.splitDate[1]
       }
     }
+
+    
+    
   }
+
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe;
+  // }
 
   changeActiveTurtle(index) {
     this.activeTurtle = index;
@@ -50,4 +58,6 @@ export class QuizesComponent implements OnInit {
   quizToggleMethod() {
     this.quizMetrixService.changeState("quiz", true);
   }
+
+  
 }

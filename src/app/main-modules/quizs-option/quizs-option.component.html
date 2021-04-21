@@ -8,6 +8,11 @@
                 </button>
             </div>
         </div>
+        <div [hidden]="quizMetrixService.countDate == 0">
+            Minutes: {{quizMetrixService.newMin}}
+            Seconds: {{quizMetrixService.newSec}}
+        </div>
+        <button class="btn main-btn main-btn-green" *ngIf="quizMetrixService.timer == true" (click)="finalizeAnswer()">Next</button>
     </div>
     <div class="col-md-4">
         <div class="quiz-info-area-item">

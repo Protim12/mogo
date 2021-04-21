@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizMetrixService } from 'src/app/services/quiz-metrix.service';
 import { DataServeService } from 'src/app/services/data-serve.service';
 
+
 @Component({
   selector: 'app-quizs-option',
   templateUrl: './quizs-option.component.html',
@@ -15,11 +16,25 @@ export class QuizsOptionComponent implements OnInit {
   error = false;
   finalize = false;
 
+  // public newDay;
+  // public newHr;
+  // public newMin;
+  // public newSec;
+
+  
+
   constructor(public quizMetrixService: QuizMetrixService, private questionDataServe: DataServeService) { }
 
   ngOnInit(): void {
     this.newTurtlesQuestions = this.questionDataServe.quizQuestions;
+
+    // this.newDay = this.quizMetrixService.newDay;
+    // this.newHr = this.quizMetrixService.newHr;
+    // this.newMin = this.quizMetrixService.newMin;
+    // this.newSec = this.quizMetrixService.newSec;
   }
+
+  
 
   // Active next question
   setActiveQuestion(i = undefined) {
@@ -74,5 +89,10 @@ export class QuizsOptionComponent implements OnInit {
     this.quizMetrixService.markQuiz();
     this.quizMetrixService.changeState("quiz", false);
     this.quizMetrixService.changeState("results", true);
+    this.quizMetrixService.countDate = 0;
+    // if(this.quizMetrixService.changeState("results", true)) {
+    //   this.quizMetrixService.timer = false;
+    // }
+    this.quizMetrixService.timer = false;
   }
 }

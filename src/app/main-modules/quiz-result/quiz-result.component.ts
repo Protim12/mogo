@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizMetrixService } from 'src/app/services/quiz-metrix.service';
 import { DataServeService } from 'src/app/services/data-serve.service';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-result',
@@ -11,6 +12,7 @@ export class QuizResultComponent implements OnInit {
 
   newTurtlesQuestions: any;
   activeQuestion = 0;
+  private subscription: Subscription;
 
   constructor(public quizMetrixService: QuizMetrixService, private questionDataServe: DataServeService) { }
 
@@ -38,7 +40,22 @@ export class QuizResultComponent implements OnInit {
 
   reset() {
     this.quizMetrixService.changeState("results", false);
+    
     this.quizMetrixService.numCorrect = 0;
+
+    // this.quizMetrixService.countDate = 25;
+    // this.subscription = interval(1000).subscribe(x => {
+    //   this.quizMetrixService.newMin = Math.floor((this.quizMetrixService.countDate / 60) % 60)
+    //   this.quizMetrixService.newSec = this.quizMetrixService.countDate % 60
+    //   this.quizMetrixService.countDate = this.quizMetrixService.countDate - 1;
+    //   if(this.quizMetrixService.newSec < 1) {
+    //     this.quizMetrixService.timer = true;
+    //     this.quizMetrixService.countDate = 0;
+    //   }
+    //   // if(this.resultActive = state) {
+    //   //   this.timer = true;
+    //   // }
+    // });
     for(var i=0; i<this.newTurtlesQuestions.length; i++) {
       var data = this.newTurtlesQuestions[i];
       data.selected = null;
