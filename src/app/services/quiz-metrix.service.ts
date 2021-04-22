@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { interval, Observable, Subject } from 'rxjs';
 import { DataServeService } from './data-serve.service';
-import { interval, Subscription } from 'rxjs';
+// interval
 
 @Injectable({
   providedIn: 'root'
@@ -11,58 +12,51 @@ export class QuizMetrixService {
   resultActive: false;
   correctAnswer:any = [];
   numCorrect:any = 0;
-  timer = false;
+  something: any = false;
 
-
-  countDate: any = 25;
-  sec = 1000;
-  min = this.sec * 60;
-  hr = this.min * 60;
-  day = this.hr * 24;
-  public distance;
-  public newDay = 0;
-  public newHr = 0;
-  public newMin = 0;
-  public newSec = 0;
-  private subscription: Subscription;
+  dateEntry = 10;
+  // countDate: any = this.dateEntry;
+  // newMin = 0;
+  // newSec = 0;
+  // timer = false;
+  
+  
   
   constructor(private dataServeService: DataServeService) { }
 
   changeState(metric, state) {
     if(metric === "quiz") {
       this.quizCardArea = state;
-
-      this.subscription = interval(1000).subscribe(x => {
-        this.newMin = Math.floor((this.countDate / 60) % 60)
-        this.newSec = this.countDate % 60
-        this.countDate = this.countDate - 1;
-        if(this.newSec < 1) {
-          this.timer = true;
-          this.countDate = 0;
-        }
-      });
+      // clearInterval(this.countDate);
+      this.something = true;
+      
+      setInterval(function() {
+        // console.log("hi")
+        // this.newMin = Math.floor((this.countDate / 60) % 60)
+        // this.newSec = this.countDate % 60;
+        // this.countDate = this.countDate - 1;
+        // if(this.newSec < 1) {
+        //   this.timer = true;
+        //   this.countDate = 0;
+        // }
+        // console.log(this.newMin)
+      },
+      1000)
     }
     else if(metric === "results") {
       this.resultActive = state;
-      this.subscription.unsubscribe();
-      this.countDate = 25;
+      this.something = false;
+      // this.subscription.unsubscribe();
+      // this.countDate = this.dateEntry;
+      
+      // this.countDate = this.dateEntry;
       // this.countDate = false;
       // if(this.newSec < 1) {
       // }
       // this.timer = false;
     }
     else {
-      this.subscription.unsubscribe();
-      this.countDate = 25;
-      // this.subscription = interval(2000).subscribe(x => {
-      //   this.newMin = Math.floor((this.countDate / 60) % 60)
-      //   this.newSec = this.countDate % 60
-      //   this.countDate = this.countDate - 1;
-      //   if(this.newSec < 1) {
-      //     this.timer = true;
-      //     this.countDate = 0;
-      //   }
-      // });
+      // this.subscription.unsubscribe();
       return false;
     }
   }
@@ -78,6 +72,15 @@ export class QuizMetrixService {
         this.dataServeService.quizQuestions[i].correct = false;
       }
     }
+  }
+
+
+  private subject = new Subject<any>();
+  sendClickEvent() {
+    this.subject.next();
+  }
+  getClickEvent(): Observable<any>{ 
+    return this.subject.asObservable();
   }
 
 }

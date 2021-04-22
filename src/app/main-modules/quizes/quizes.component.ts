@@ -19,7 +19,10 @@ export class QuizesComponent implements OnInit {
   activeTurtle: {};
   myModalTrue = false;
   turtlesSearch: any;
-  
+
+  myCounterIncre = 10;
+  counterIncre = this.myCounterIncre;
+  pranto: any;
 
   constructor(public rs: RestService, private _myTur: RestService, public quizMetrixService: QuizMetrixService, private newMyTurtles: DataServeService) { }
   
@@ -39,10 +42,6 @@ export class QuizesComponent implements OnInit {
     
   }
 
-  // ngOnDestroy(): void {
-  //   this.subscription.unsubscribe;
-  // }
-
   changeActiveTurtle(index) {
     this.activeTurtle = index;
     this.myModalTrue = true;
@@ -57,6 +56,7 @@ export class QuizesComponent implements OnInit {
   // quizToggleMethod
   quizToggleMethod() {
     this.quizMetrixService.changeState("quiz", true);
+    this.quizMetrixService.sendClickEvent();
   }
 
   

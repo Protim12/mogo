@@ -42,8 +42,10 @@ export class QuizResultComponent implements OnInit {
     this.quizMetrixService.changeState("results", false);
     
     this.quizMetrixService.numCorrect = 0;
+    this.quizMetrixService.dateEntry = this.quizMetrixService.dateEntry
+    // this.quizMetrixService.sendClickEvent();
 
-    // this.quizMetrixService.countDate = 25;
+    // this.quizMetrixService.countDate = this.quizMetrixService.dateEntry;
     // this.subscription = interval(1000).subscribe(x => {
     //   this.quizMetrixService.newMin = Math.floor((this.quizMetrixService.countDate / 60) % 60)
     //   this.quizMetrixService.newSec = this.quizMetrixService.countDate % 60
