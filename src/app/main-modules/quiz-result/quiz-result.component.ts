@@ -42,22 +42,7 @@ export class QuizResultComponent implements OnInit {
     this.quizMetrixService.changeState("results", false);
     
     this.quizMetrixService.numCorrect = 0;
-    this.quizMetrixService.dateEntry = this.quizMetrixService.dateEntry
-    // this.quizMetrixService.sendClickEvent();
-
-    // this.quizMetrixService.countDate = this.quizMetrixService.dateEntry;
-    // this.subscription = interval(1000).subscribe(x => {
-    //   this.quizMetrixService.newMin = Math.floor((this.quizMetrixService.countDate / 60) % 60)
-    //   this.quizMetrixService.newSec = this.quizMetrixService.countDate % 60
-    //   this.quizMetrixService.countDate = this.quizMetrixService.countDate - 1;
-    //   if(this.quizMetrixService.newSec < 1) {
-    //     this.quizMetrixService.timer = true;
-    //     this.quizMetrixService.countDate = 0;
-    //   }
-    //   // if(this.resultActive = state) {
-    //   //   this.timer = true;
-    //   // }
-    // });
+    this.quizMetrixService.dateEntry = this.quizMetrixService.dateEntry;
     for(var i=0; i<this.newTurtlesQuestions.length; i++) {
       var data = this.newTurtlesQuestions[i];
       data.selected = null;

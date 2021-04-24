@@ -128,3 +128,38 @@
     }
 }
 
+.quiz-area-body {
+    ol {
+        margin-top: 15px;
+        margin-bottom: 0;
+        li {
+            font-size: 16px;
+            color: $paragraph;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            span {
+                color: $secondary_color;
+            }
+        }
+    }
+}
+.quiz-timer {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    ul {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    li {
+        font-size: 15px;
+        display: inline-block;
+        color: $paragraph;
+        margin-right: 10px;
+        span {
+            color: $secondary_color;
+            margin-left: 3px;
+        }
+    }
+}

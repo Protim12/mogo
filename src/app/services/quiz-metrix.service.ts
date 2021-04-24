@@ -14,7 +14,7 @@ export class QuizMetrixService {
   numCorrect:any = 0;
   something: any = false;
 
-  dateEntry = 10;
+  dateEntry = 120;
   // countDate: any = this.dateEntry;
   // newMin = 0;
   // newSec = 0;

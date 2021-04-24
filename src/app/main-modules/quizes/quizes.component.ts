@@ -20,9 +20,8 @@ export class QuizesComponent implements OnInit {
   myModalTrue = false;
   turtlesSearch: any;
 
-  myCounterIncre = 10;
-  counterIncre = this.myCounterIncre;
-  pranto: any;
+  // myCounterIncre = 10;
+  // counterIncre = this.myCounterIncre;
 
   constructor(public rs: RestService, private _myTur: RestService, public quizMetrixService: QuizMetrixService, private newMyTurtles: DataServeService) { }
   
@@ -38,7 +37,9 @@ export class QuizesComponent implements OnInit {
       }
     }
 
-    
+    // var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
+    // this.audio.muted = true;
+    // this.audio.play();
     
   }
 
@@ -56,8 +57,6 @@ export class QuizesComponent implements OnInit {
   // quizToggleMethod
   quizToggleMethod() {
     this.quizMetrixService.changeState("quiz", true);
-    this.quizMetrixService.sendClickEvent();
+    // this.quizMetrixService.sendClickEvent();
   }
-
-  
 }

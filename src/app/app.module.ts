@@ -10,6 +10,7 @@ import { MainModuleModule } from './main-modules/main-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+// import { FormsModule } from '@angular/forms';
 // import { QuizCardSearchPipe } from './pipes/quiz-card-search.pipe';
 // import
 

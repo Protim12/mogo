@@ -1,61 +1,86 @@
-<div class="row quiz-info-area">
-    <div class="col-md-8">
-        <div class="quiz-info-area-item">
-            <h3>Progress:</h3>
-            <div class="button-toolbar">
-                <button class="btn main-btn" *ngFor="let questionBtn of newTurtlesQuestions; let i = index" [ngClass]="{'main-btn-red': questionBtn.selected === null, 'main-btn-green': questionBtn.selected !== null}" (click)="setActiveQuestion(i)">
-                    <i class="fas" [ngClass]="{'fa-question-circle': questionBtn.selected === null, 'fa-pencil-alt': questionBtn.selected !== null}"></i>
-                </button>
-            </div>
+<!-- Quiz Intro -->
+<div class="quiz-intro" *ngIf="quizIntro">
+    <div class="quiz-display-area">
+        <div class="quiz-area-header">Rules Of This Quiz</div>
+        <div class="quiz-area-body">
+            <ol>
+                <li>You will have only <span>2 minutes</span> to complete this session.</li>
+                <li>You will get points on the basis of the correct answers.</li>
+            </ol>
         </div>
-        <div [hidden]="countDate == 0">
-            Minutes: {{newMin}}
-            Seconds: {{newSec}}
-        </div>
-        <button class="btn main-btn main-btn-green" *ngIf="timer == true" (click)="finalizeAnswer()">Next</button>
-    </div>
-    <div class="col-md-4">
-        <div class="quiz-info-area-item">
-            <h3>Legend:</h3>
-            <div class="row">
-                <div class="col-4">
-                    <div class="button-toolbar">
-                        <button class="btn main-btn main-btn-green">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        <p>Answered</p>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="button-toolbar">
-                        <button class="btn main-btn main-btn-red">
-                            <i class="fas fa-question-circle"></i>
-                        </button>
-                        <p>Not Answered</p>
-                    </div>
-                </div>
-            </div>
+        <div class="quiz-area-footer">
+            <button class="btn main-btn main-btn-green" (click)="getStart()">GET START</button>
         </div>
     </div>
 </div>
-<div class="quiz-display-area">
-    <div class="quiz-area-header">{{activeQuestion+1 + ". " + newTurtlesQuestions[activeQuestion].text}}</div>
-    <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'text'">
-        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities; let i = index" >
-            <div class="quiz-area-list-inner" [ngClass]="{'active': i === newTurtlesQuestions[activeQuestion].selected}" (click)="seletedAnswer(i)">
-                {{item.answer}}
+<!-- Quiz First Prompt -->
+
+<div *ngIf="quizStart">
+    <div class="row quiz-info-area">
+        <!-- Quizs -->
+        <div class="col-md-8">
+            <div class="quiz-info-area-item">
+                <h3>Progress:</h3>
+                <div class="button-toolbar">
+                    <button class="btn main-btn" *ngFor="let questionBtn of newTurtlesQuestions; let i = index" [ngClass]="{'main-btn-red': questionBtn.selected === null, 'main-btn-green': questionBtn.selected !== null}" (click)="setActiveQuestion(i)">
+                        <i class="fas" [ngClass]="{'fa-question-circle': questionBtn.selected === null, 'fa-pencil-alt': questionBtn.selected !== null}"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="quiz-timer">
+                <ul class="quiz-timer">
+                    <li>
+                        Minutes: <span>{{newMin}}</span>
+                    </li>
+                    <li>
+                        Seconds: <span>{{newSec}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="quiz-info-area-item">
+                <h3>Legend:</h3>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="button-toolbar">
+                            <button class="btn main-btn main-btn-green">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <p>Answered</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="button-toolbar">
+                            <button class="btn main-btn main-btn-red">
+                                <i class="fas fa-question-circle"></i>
+                            </button>
+                            <p>Not Answered</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'image'">
-        <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities; let i = index" >
-            <div class="quiz-area-list-inner" [ngClass]="{'active': i === newTurtlesQuestions[activeQuestion].selected}" (click)="seletedAnswer(i)">
-                <img [src]="item.answer" alt="">
+    <div class="quiz-display-area">
+        <div class="quiz-area-header">{{activeQuestion+1 + ". " + newTurtlesQuestions[activeQuestion].text}}</div>
+        <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'text'">
+            <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities; let i = index" >
+                <div class="quiz-area-list-inner" [ngClass]="{'active': i === newTurtlesQuestions[activeQuestion].selected}" (click)="seletedAnswer(i)">
+                    {{item.answer}}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="quiz-area-footer">
-        <button class="btn main-btn main-btn-green" *ngIf="newTurtlesQuestions?.length" (click)="continueQuiz()">CONTINUE</button>
+        <div class="quiz-area-body" *ngIf="newTurtlesQuestions[activeQuestion].type === 'image'">
+            <div class="quiz-area-list" *ngFor="let item of newTurtlesQuestions[activeQuestion].possibilities; let i = index" >
+                <div class="quiz-area-list-inner" [ngClass]="{'active': i === newTurtlesQuestions[activeQuestion].selected}" (click)="seletedAnswer(i)">
+                    <img [src]="item.answer" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="quiz-area-footer">
+            <button class="btn main-btn main-btn-green" *ngIf="newTurtlesQuestions?.length" (click)="continueQuiz()">CONTINUE</button>
+        </div>
     </div>
 </div>
 
@@ -89,6 +114,20 @@
         <div class="error-modal-footer d-flex justify-content-center">
             <button class="btn main-btn main-btn-green" (click)="finalizeAnswer()">YES</button>
             <button class="btn main-btn main-btn-red" (click)="finalize = false">NO</button>
+        </div>
+    </div>
+</div>
+<!-- Error Modal -->
+
+<!-- Timer Finish Modal -->
+<div class="error-modal-wrapper" [ngClass]="{'active': timer}">
+    <div class="error-modal">
+        <div class="error-modal-body">
+            <img src="assets/images/error-modal.png" alt="">
+            <p>Your times has been finished</p>
+        </div>
+        <div class="error-modal-footer d-flex justify-content-center">
+            <button class="btn main-btn main-btn-green" (click)="finalizeAnswer()">VIEW RESULT</button>
         </div>
     </div>
 </div>

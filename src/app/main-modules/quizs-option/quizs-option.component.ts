@@ -9,13 +9,16 @@ import { interval, Subscription } from 'rxjs';
   templateUrl: './quizs-option.component.html',
   styleUrls: ['./quizs-option.component.scss']
 })
-export class QuizsOptionComponent implements OnInit, OnDestroy {
+export class QuizsOptionComponent implements OnInit {
 
   newTurtlesQuestions: any;
   activeQuestion = 0;
   numQuestionAnswered = 0;
   error = false;
   finalize = false;
+  quizIntro = true;
+  quizStart = false;
+  finishTime = false;
 
   countDate: any = this.quizMetrixService.dateEntry;
   newMin = 0;
@@ -25,11 +28,11 @@ export class QuizsOptionComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(public quizMetrixService: QuizMetrixService, private questionDataServe: DataServeService) {
-    this.subscription = this.quizMetrixService.getClickEvent().subscribe(()=>{
-      // this.newTime();
-      this.quizTimer();
-      // this.resetCounter();
-    })
+    // this.subscription = this.quizMetrixService.getClickEvent().subscribe(()=>{
+    //   // this.newTime();
+    //   // this.quizTimer();
+    //   // this.resetCounter();
+    // })
   }
 
   
@@ -38,11 +41,16 @@ export class QuizsOptionComponent implements OnInit, OnDestroy {
     this.newTurtlesQuestions = this.questionDataServe.quizQuestions;
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 
-  
+  // Start quiz
+  getStart() {
+    this.quizStart = true;
+    this.quizIntro = false;
+    this.quizTimer();
+  }
 
   // Active next question
   setActiveQuestion(i = undefined) {
@@ -94,7 +102,7 @@ export class QuizsOptionComponent implements OnInit, OnDestroy {
     this.newMin = Math.floor((this.countDate / 60) % 60);
     this.newSec = Math.floor(this.countDate % 60);
     this.countDate = this.countDate - 1;
-    if(this.newSec < 1) {
+    if(this.countDate < 0) {
       this.timer = true;
       this.countDate = 0;
     }
@@ -110,7 +118,6 @@ export class QuizsOptionComponent implements OnInit, OnDestroy {
 
   // Finalize answer
   finalizeAnswer() {
-    // this.countDate = this.quizMetrixService.dateEntry;
     this.finalize = false;
     this.numQuestionAnswered = 0;
     this.activeQuestion = 0;
@@ -118,9 +125,15 @@ export class QuizsOptionComponent implements OnInit, OnDestroy {
     this.quizMetrixService.changeState("quiz", false);
     this.quizMetrixService.changeState("results", true);
     this.timer = false;
-    // clearInterval(this.countDate);
 
     clearInterval(this.counterInterval)
     this.countDate = this.quizMetrixService.dateEntry;
+    this.quizIntro = true;
+    this.quizStart = false;
+  }
+
+  // Audio play
+  playAudio() {
+
   }
 }
