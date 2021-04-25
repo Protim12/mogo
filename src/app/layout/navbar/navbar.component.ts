@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   sticky: boolean = false;
   elementPosition: any;
   user: SocialUser;
+  myUser: any;
 
   constructor(private socialAuthService: SocialAuthService) {
     
@@ -40,9 +41,51 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // var navbarNav = document.getElementsByClassName("");
-    this.socialAuthService.authState.subscribe((user) => {
+    // let defaultUser = this.user;
+    // this.socialAuthService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   // console.log(this.user.name)
+
+
+    //   localStorage.setItem('googleUserName', this.user.name);
+    //   // localStorage.setItem('authUser', this.user);
+    //   localStorage.getItem('googleUserName');
+    //   console.log(this.user)
+    // })
+    // console.log(this.user)
+    var pranto = this.socialAuthService.authState.subscribe((user) => {
       this.user = user;
+      this.myUser = user;
+      // this.myUser.
+      // console.log(this.user.name)
+
+      console.log("hi", this.user.name)
+      localStorage.setItem('googleUserName', this.user.name);
+      localStorage.getItem('googleUserName');
+      // // localStorage.setItem('authUser', this.user);
+      // console.log(this.user)
+      
     })
+    console.log("pranto", this.myUser.name)
+    // if(localStorage.getItem('googleUserName')) {
+    //   // this.user.name = pranto.add
+    //   // this.user = user
+    // }
+    // console.log(this.user.name)
+    // console.log(localStorage.getItem('googleUserName'))
+    
+    // else {
+    //   this.socialAuthService.authState.subscribe((user) => {
+    //     this.user = user;
+    //     // console.log(this.user.name)
+  
+  
+    //     localStorage.setItem('googleUserName', this.user.name);
+    //     // localStorage.setItem('authUser', this.user);
+    //     localStorage.getItem('googleUserName');
+    //     console.log(this.user)
+    //   })
+    // }
   }
 
   ngAfterViewInit(){
@@ -63,6 +106,7 @@ export class NavbarComponent implements OnInit {
   signInWithGoogle() {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
+
   // google signout
   signOutWithGoogle() {
     this.socialAuthService.signOut();
