@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<!-- Inner Page Header -->
+<header class="inner-page-header">
+    <div class="container">
+        <div class="header-inner-content">
+            <h1>Contact Us</h1>
+        </div>
+    </div>
+</header>
+<!-- Inner Page Header -->
+<!-- Contact Section -->
+<section class="contact-section pt-100 pb-70 border-bottom">
+    <div class="container">
+        <div class="section-title">
+            <small>Contact With Us</small>
+            <h2>Get Connected</h2>
+        </div>
+        <!-- <li *ngFor="let item of myContacts">{{item.id}}</li> -->
+        <div class="layout-box">
+            <form [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+                <div class="form-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" #firstname class="form-control" formControlName="firstname" [ngClass]="{'is-invalid': form.get('firstname').touched && form.get('firstname').invalid}" />
+                    <div *ngIf="form.get('email').touched && form.get('email').invalid">
+                        <small *ngIf="form.get('firstname').touched && form.get('firstname').invalid" class="error-text">First name is required.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" #lastname class="form-control" formControlName="lastname" [ngClass]="{'is-invalid': form.get('lastname').touched && form.get('lastname').invalid}" />
+                    <div *ngIf="form.get('email').touched && form.get('email').invalid">
+                        <small *ngIf="form.get('lastname').touched && form.get('lastname').invalid" class="error-text">Last name is required.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" #email class="form-control" formControlName="email" [ngClass]="{'is-invalid': form.get('email').touched && form.get('email').invalid}" />
+                    <div *ngIf="form.get('email').touched && form.get('email').invalid">
+                        <small *ngIf="form.get('email').errors.required" class="error-text">Email is required.</small>
+                        <small *ngIf="form.get('email').errors.email" class="error-text">Invalid email format. Use proper format of email. For example: xyz@gmail.com</small>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" #email class="form-control" formControlName="password" [ngClass]="{'is-invalid': form.get('password').touched && form.get('password').invalid}" />
+                    <div *ngIf="form.get('password').touched && form.get('password').invalid">
+                        <small *ngIf="form.get('password').errors.required" class="error-text">Password is required.</small>
+                        <small *ngIf="form.get('password').errors.pattern" class="error-text">Password must be atleast 6 characters. Include atleast one uppercase, one lowercase, one number and one special character.</small>
+                    </div>
+                </div> -->
+                <div class="text-center">
+                    <button type="submit" class="btn main-btn main-btn-green" [disabled]="!form.valid" >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Contact Section -->
+<app-footer></app-footer>

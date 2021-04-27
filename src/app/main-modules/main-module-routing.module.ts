@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 // BrowserAnimationsModule
 import { MainViewComponent } from './main-view/main-view.component';
 import { QuizesComponent } from './quizes/quizes.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'quizes',
     component: QuizesComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   }
 ];
 

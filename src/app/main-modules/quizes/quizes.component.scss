@@ -1,28 +1,5 @@
 @import "../../../assets/css/variable";
 
-.inner-page-header {
-    background-image: url(../../../assets/images/banner/banner.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding-top: 260px;
-    padding-bottom: 200px;
-    position: relative;
-    &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient( 0deg, rgba(252, 227, 138, 0.8) 0%, rgba(243, 129, 129, 0.8) 100%);
-    }
-    @media #{$to-991} {
-        padding-top: 160px;
-        padding-bottom: 100px;
-    }
-}
-
 // Blog section
 .quiz-card {
     &:hover {
